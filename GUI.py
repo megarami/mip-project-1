@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 
 class GUI:
     def __init__(self):
+        self.dcm_image = None
         self.cropped_image_plot = None
         self.original_image_plot = None
         self.segmentation_plot = None
@@ -88,4 +89,6 @@ class GUI:
         plt.show()
 
     def get_dcm_image(self):
+        if self.dcm_image is None:
+            raise Exception(".dcm file not specified")
         return self.dcm_image
