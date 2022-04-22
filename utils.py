@@ -3,7 +3,16 @@ from pprint import pprint
 
 def get_coordinates(input_string):
     left, top, right, bottom = input_string.split(',')
-    return tuple(map(lambda x: int(x), [left, top, right, bottom]))
+
+    coordinates = tuple(map(lambda x: int(x), [left, top, right, bottom]))
+
+    if coordinates[0] > coordinates[2] or coordinates[1] > coordinates[3]:
+        raise Exception("Incorrect coordinates")
+    for num in coordinates:
+        if num < 0:
+            raise Exception("Coordinates can't be negative")
+
+    return coordinates
 
 
 def extract_info(dcm_image):
