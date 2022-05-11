@@ -77,13 +77,16 @@ class GUI:
         plt.title("Image after watershed")
         plt.show()
 
-    def create_gui(self):
-        self.original_image_plot = self.plot.add_subplot(131)
-        self.cropped_image_plot = self.plot.add_subplot(132)
-        self.segmentation_plot = self.plot.add_subplot(133)
+    def create_gui(self, arguments):
+        subplots = len(arguments)
+        self.original_image_plot = self.plot.add_subplot(100+subplots*10+1)
         self.original_image_plot.title.set_text('Original image')
-        self.cropped_image_plot.title.set_text('Cropped image')
-        self.segmentation_plot.title.set_text('Segmentation')
+        if subplots > 1:
+            self.cropped_image_plot = self.plot.add_subplot(100+subplots*10+2)
+            self.cropped_image_plot.title.set_text('Cropped image')
+        if subplots >2:
+            self.segmentation_plot = self.plot.add_subplot(100+subplots*10+3)
+            self.segmentation_plot.title.set_text('Segmentation')
 
     def render(self):
         plt.show()

@@ -11,7 +11,7 @@ if __name__ == '__main__':
     gui = GUI()
     try:
         arguments, options = getopt.getopt(arguments, options, long_options)
-        gui.create_gui()
+        gui.create_gui(arguments)
         for argument, value in arguments:
             if argument == '-f':
                 gui.load_image(value)
